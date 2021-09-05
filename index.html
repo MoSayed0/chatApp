@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+    <script
+        src="https://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+    <script src="script.js"></script>
+
+</head>
+<body>
+	<div class="container">
+	    <div id="chat-box" style="display: none;">
+		<div class="row form-group">
+		<div class="col-xs-12 col-md-offset-2 col-md-8 col-lg-8 col-lg-offset-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span> 
+                      <label id="channelLabel">channelLabel</label> 
+                      <label id="activeUsers">active users</label><br>
+                      <label id="userLabel">userLabel</label>
+
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-warning btn-md" onclick="logout()" >Log out</button>
+                   </div>
+                </div>
+                <div id="chat" class="panel-body body-panel">
+                    <ul class="chat">
+                        
+                    </ul>
+                </div>
+                <div class="panel-footer clearfix">
+                    <label id="idleTimer">Idle timer {mm:ss} </label> 
+                    <textarea id="message" class="form-control" rows="3" placeholder="Type your message here..."></textarea>
+                    <span class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-12" style="margin-top: 10px">
+                        <button class="btn btn-warning btn-lg btn-block" id="btn-chat"onclick="formMessage()">Send</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+	</div>
+	<div id="login-screen">
+		<div class="row d-flex ">
+			<div class="col-md-8 p-2">
+				<div class="col-md-10  col-md-8 col-lg-8 text-center">
+					<h2>My Chat Application</h2>
+					<form id="loginForm" align="center">
+						<div class="form-group">
+							<input type="text" class="form-control input-sm" id="grpName" required placeholder="Type group name" />
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-sm" id="usrName" required placeholder="Type your name" required/>
+						</div>
+						<button id="join" type="button" class="btn btn-primary" onclick = "validateScreen1()" >Join</button>
+					</form>
+				</div>	
+			</div>  	
+		</div>
+	</div>
+  </div>
+	<script id="new-message-other" type="text/template">
+    <li class="left clearfix">
+        <span class="chat-img pull-left">
+            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+        </span>
+        <div class="chat-body clearfix">
+            <p>
+                {{body}}
+            </p>
+        </div>
+    </li>
+</script>
+
+<script id="new-message" type="text/template">
+    <li id="{{id}}" class="right clearfix">
+        <div class="chat-body clearfix">
+            <p>
+                {{body}}
+            </p>
+        </div>
+    </li>
+</script>
+</body>
+</html>
